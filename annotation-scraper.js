@@ -16,7 +16,7 @@ function build_annotation_tree(video, callback){
     let visited_videos = [];
 
     function build_tree_recursively(video){
-        async_title_fetch_count++;
+        /*async_title_fetch_count++;
         fetchVideoInfo(video.id, (err, info) => {
             if(err){
                 console.log(err);                
@@ -26,7 +26,7 @@ function build_annotation_tree(video, callback){
             async_title_fetch_count--;
             console.log(async_title_fetch_count);
             if(async_title_fetch_count == 0)callback();
-        });
+        });*/
 
         if(visited_videos.includes(video.id)){
             return;
@@ -47,17 +47,19 @@ function build_annotation_tree(video, callback){
                     if(err){
                         return console.error(err);
                     }
-                    let annotation_array = result.document.annotations[0].annotation;
-                    if(annotation_array){
-                        annotation_array.forEach( annotation => {
-                            if(annotation.action){
-                                if(annotation.action[0].$.type === 'openUrl'){
-                                    next_video_id = new URL(annotation.action[0].url[0].$.value).searchParams.get('v');
-                                    video.next_video.push(new Video(next_video_id));
-                                    
+                    if(result){
+                        let annotation_array = result.document.annotations[0].annotation;
+                        if(annotation_array){
+                            annotation_array.forEach( annotation => {
+                                if(annotation.action){
+                                    if(annotation.action[0].$.type === 'openUrl'){
+                                        next_video_id = new URL(annotation.action[0].url[0].$.value).searchParams.get('v');
+                                        video.next_video.push(new Video(next_video_id));
+                                        
+                                    }
                                 }
-                            }
-                        });
+                            });
+                        }
                     }
 
                     console.log(video);
@@ -81,7 +83,7 @@ function build_annotation_tree(video, callback){
 //Supply a youtube video url at the command line, if none given use this as the default.
 let video_url = process.argv[2];
 if(!video_url){
-    video_url = 'https://www.youtube.com/watch?v=OqozGZXYb1Y' 
+    video_url = 'https://www.youtube.com/watch?v=Jm-Kmw8pKXw&feature=youtu.be' 
 }
 
 let video_id = new URL(video_url).searchParams.get('v');
