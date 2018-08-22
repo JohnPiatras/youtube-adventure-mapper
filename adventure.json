@@ -1,0 +1,108 @@
+{
+  "OqozGZXYb1Y": {
+    "name": "Choose Your Adventure | Series 1: Escape | START HERE",
+    "link": {
+      "0": "-5gW4io5h-w",
+      "1": "7Nbi7PoSGaM"
+    }
+  },
+  "7Nbi7PoSGaM": {
+    "name": "Fusion Blaster (Gun on the Right) | Series 1: Escape",
+    "link": {
+      "0": "ah_sAJPlNdQ",
+      "1": "blwsg-QkR-E"
+    }
+  },
+  "-5gW4io5h-w": {
+    "name": "Plasma Phaser (Gun on the Left) | Series 1: Escape",
+    "link": {
+      "0": "TNEhFCRyL5o",
+      "1": "xK3rWr5J4Bk"
+    }
+  },
+  "blwsg-QkR-E": {
+    "name": "Proceed With Aggression | Series 1: Escape",
+    "link": {
+      "0": "OqozGZXYb1Y"
+    }
+  },
+  "ah_sAJPlNdQ": {
+    "name": "Proceed With Caution | Series 1: Escape",
+    "link": {
+      "0": "sWeJk98qJ_0",
+      "1": "Z8aEgOsF2wc"
+    }
+  },
+  "TNEhFCRyL5o": {
+    "name": "Make A Run For It | Series 1: Escape",
+    "link": {
+      "0": "OqozGZXYb1Y"
+    }
+  },
+  "xK3rWr5J4Bk": {
+    "name": "Step Out & Fight | Series 1: Escape",
+    "link": {
+      "0": "llqMHEzebBc",
+      "1": "wnF0_9Uqa_U"
+    }
+  },
+  "Z8aEgOsF2wc": {
+    "name": "Run From Boss | Series 1: Escape",
+    "link": {
+      "0": "OqozGZXYb1Y"
+    }
+  },
+  "sWeJk98qJ_0": {
+    "name": "Confront Boss | Series 1: Escape",
+    "link": {
+      "0": "w6bbmHG3Qjs",
+      "1": "miCB3H7A0tc"
+    }
+  },
+  "wnF0_9Uqa_U": {
+    "name": "Stealth Down Stairs | Series 1: Escape",
+    "link": {
+      "0": "Nw-d2Ij4kSQ",
+      "1": "1Jras0oFYUI"
+    }
+  },
+  "llqMHEzebBc": {
+    "name": "Embrace The Fear & Fight | Series 1: Escape",
+    "link": {
+      "0": "p21Q82tvLzY",
+      "1": "eQkbDqGeCVk"
+    }
+  },
+  "w6bbmHG3Qjs": {
+    "name": "Continue Down Hall | Series 1: Escape",
+    "link": {}
+  },
+  "miCB3H7A0tc": {
+    "name": "Enter Room | Series 1: Escape",
+    "link": {
+      "0": "OqozGZXYb1Y"
+    }
+  },
+  "Nw-d2Ij4kSQ": {
+    "name": "Fight | Series 1: Escape",
+    "link": {
+      "0": "OqozGZXYb1Y"
+    }
+  },
+  "p21Q82tvLzY": {
+    "name": "Continue Straight | Series 1: Escape",
+    "link": {}
+  },
+  "eQkbDqGeCVk": {
+    "name": "Go Down Right Hallway | Series 1: Escape",
+    "link": {
+      "0": "OqozGZXYb1Y"
+    }
+  },
+  "1Jras0oFYUI": {
+    "name": "Run | Series 1: Escape",
+    "link": {
+      "0": "OqozGZXYb1Y"
+    }
+  }
+}
