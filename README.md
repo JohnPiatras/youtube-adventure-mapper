@@ -1,27 +1,32 @@
-## Youtube Annotation Scraper
+## Youtube Adventure Mapper
 
-When complete this will provide a function for scraping the annotations, and walking any link annotations, of a youtube video.
+Some intrepid, possibly slightly mad, people on youtube like to create choose your own adventure games using videos and annotations which link to other videos.
 
+One example is [The Dark Room](https://www.youtube.com/watch?v=OqozGZXYb1Y) by Australian comedian John Robertson.
+
+This tool allows you to map these adventure games.
 
 ## Usage
 
-node annotation-scraper.js [url]
+`node youtube-adventure-mapper.js [url]`
 
-Run it without providing a url and it will scrape the annotations of this video: https://www.youtube.com/watch?v=OqozGZXYb1Y
+Run it without providing a url and it will scrape the annotations of [The Dark Room](https://www.youtube.com/watch?v=OqozGZXYb1Y).
 
-The end result should be an object with the following structure:
+## Output
+The output consists of two files:
 
-```
-Video { 
-	title: 'video title', 
-	id: 'video id', 
-	next_video: [] 
-	}
-```
+ * output.json - a JSON representation of the videos and their annotation links to other videos.
 
-The next_video array contains another Video element for each of the annotations that linked to another video.
+ * output.dot - can plotted as a graph using the graphvis dot command.
 
-At the moment once it has completed it will drop you into a node console where you can play with the results, available as the var "videos".
+ The DOT output can be turned into a fabulous visualisation using the command `dot -Tsvg ./output.dot > output.svg`.
+
+ An example of the two output files and an svg graph are all available in this repository.
+
+Here is the DOT visualisation of the map of The Dark Room:
+
+![alttext](darkroom.svg)
+
 
 
 
