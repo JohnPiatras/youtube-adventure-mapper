@@ -1,8 +1,8 @@
 {
-  "name": "annotation-scraper",
-  "version": "0.1.0",
+  "name": "youtube-aventure-mapper",
+  "version": "0.2.0",
   "description": "",
-  "main": "annotation-scraper.js",
+  "main": "youtube-adventure-mapper.js",
   "dependencies": {
     "request": "^2.88.0",
     "xml2js": "^0.4.19",
