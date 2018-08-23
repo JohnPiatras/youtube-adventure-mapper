@@ -45,7 +45,7 @@ function mapAdventure(url, callback){
     let map = {};
     let video_id = new URL(video_url).searchParams.get('v');
     let completion_count = 0;
-
+    let video_count = 0;
     function exploreVideo(video_id){
         completion_count++;
         let annotation_video_ids = null;
@@ -54,6 +54,8 @@ function mapAdventure(url, callback){
             //console.log('  Fetching annotations...');
             if(result)annotation_video_ids = getAnnotationVideoIds(result);
             if(!map[`${video_id}`]){
+                video_count++;
+                process.stdout.write('\rFound ' + video_count + ' videos...');
                 map[`${video_id}`] = {   name: '',
                                     link: {}};
                 if(annotation_video_ids){                    
@@ -80,7 +82,7 @@ function getTitles(map){
     let video_title_fetch_chain = Promise.resolve();
     let progress = new ProgressBar();
 
-    console.log("Retreiving titles for " + video_ids.length + " videos...");
+    console.log("\nRetreiving titles for " + video_ids.length + " videos...");
     video_ids.forEach( (id, i) => {
         
   
@@ -139,5 +141,5 @@ if(!video_url) video_url = 'https://www.youtube.com/watch?v=Jm-Kmw8pKXw&feature=
 
 let video_id = new URL(video_url).searchParams.get('v');
 
-console.log('Calling mapAdventure()');
+console.log('Mapping Youtube adventure at ' + video_url);
 let map = mapAdventure(video_url, getTitles);
