@@ -37,7 +37,8 @@ function getAnnotationVideoIds(annotations){
         .filter( (annotation) => annotation.action && annotation.action[0].$.type === 'openUrl' )
         .map( annotation => {
             return new URL(annotation.action[0].url[0].$.value).searchParams.get('v');
-        });
+        })
+        .filter( (video_id) => video_id != null);
     return result;
 }
 
