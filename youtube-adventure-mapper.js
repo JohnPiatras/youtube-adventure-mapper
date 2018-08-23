@@ -15,6 +15,22 @@ function inspect(object){
     console.log(util.inspect(object, false, null));
 }
 
+function ProgressBar(){
+    this.spinner = '▌▀▐▄'.split('');
+    this.spinner_index = 0;
+    this.print = function(currentValue, totalValue){
+        let percent = 100.0 * currentValue / totalValue;
+        let progress_bar = "|";
+    
+        bar_fill = Math.floor(percent / 2);
+    
+        progress_bar = this.spinner[this.spinner_index] + ' |' + '='.repeat(bar_fill) + ' '.repeat(50 - bar_fill) + '|' + ` ${Math.floor(percent)}%`;
+        this.spinner_index++;
+        if(this.spinner_index > this.spinner.length-1)this.spinner_index = 0;
+        process.stdout.write(`\r${progress_bar}`);    
+    }
+}
+
 //Filter for Action type annotations, get the URLs and then video IDs.
 function getAnnotationVideoIds(annotations){
     result = annotations 
@@ -62,6 +78,7 @@ function mapAdventure(url, callback){
 function getTitles(map){
     let video_ids = Object.keys(map);
     let video_title_fetch_chain = Promise.resolve();
+    let progress = new ProgressBar();
 
     console.log("Retreiving titles for " + video_ids.length + " videos...");
     video_ids.forEach( (id, i) => {
@@ -69,11 +86,12 @@ function getTitles(map){
   
         video_title_fetch_chain =   video_title_fetch_chain
                                     .then( () =>    fetchVideoInfo(id)
-                                                    .then( (video_info) => {console.log(i + " : " + id + " : " + video_info.title);map[id].name = video_info.title})
+                                                    .then( (video_info) => {map[id].name = video_info.title;progress.print(i, video_ids.length)})
                                     );
     });
-
+    
     video_title_fetch_chain.then( () => {
+        console.log();
         write_json(map);
         write_graph(map);
     });
