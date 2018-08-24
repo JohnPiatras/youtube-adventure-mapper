@@ -6,6 +6,13 @@ One example is [The Dark Room](https://www.youtube.com/watch?v=OqozGZXYb1Y) by A
 
 This tool allows you to map these adventure games.
 
+## Why?
+It was all Ed's idea. Ed is a John Robertson fan and wanted to map out his YouTube game, The Dark Room.
+So, here we are...
+
+Ed can be found at the [Glasgow Coder Collective](https://glasgowcodercollective.herokuapp.com/) and also has his own GitHub page at [L3gomancer](https://github.com/L3gomancer).
+
+
 ## Usage
 
 `node youtube-adventure-mapper.js [url]`
