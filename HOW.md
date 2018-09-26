@@ -47,6 +47,12 @@ The variable **pending_videos** will be used to track how many videos we are cur
 
 The variable **video_count** is incremented each time we find a video we have not already encountered. It is used to provide feedback on the number of unique videos encountered (output happens at **line 59**).
 
+At **line 50** we declare the function *exploreVideo* nested within *mapAdventure*.
+
+The *exploreVideo* function is called at **line 76** at which point we start a series of recursive calls to this function that will map out the adventure.
+
+### Nested Function: exploreVideo(video_id)
+
 
 
 
