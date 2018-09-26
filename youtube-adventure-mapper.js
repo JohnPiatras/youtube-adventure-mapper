@@ -140,7 +140,5 @@ function write_graph(map){
 let video_url = process.argv[2];
 if(!video_url) video_url = 'https://www.youtube.com/watch?v=Jm-Kmw8pKXw&feature=youtu.be';
 
-let video_id = new URL(video_url).searchParams.get('v');
-
 console.log('Mapping Youtube adventure at ' + video_url);
 let map = mapAdventure(video_url, getTitles);
