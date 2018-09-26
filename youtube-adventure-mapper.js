@@ -45,10 +45,10 @@ function getAnnotationVideoIds(annotations){
 function mapAdventure(url, callback){
     let map = {};
     let video_id = new URL(video_url).searchParams.get('v');
-    let completion_count = 0;
+    let pending_videos = 0;
     let video_count = 0;
     function exploreVideo(video_id){
-        completion_count++;
+        pending_videos++;
         let annotation_video_ids = null;
         //console.log('Exploring video ' + video_id);
         YTFetchAnnotations(video_id, (err, result) => {
@@ -68,8 +68,8 @@ function mapAdventure(url, callback){
             }else{
                 //console.log('    Already mapped...');
             } 
-            completion_count--;
-            if(completion_count == 0)callback(map);         
+            pending_videos--;
+            if(pending_videos == 0)callback(map);         
         });
     }
 

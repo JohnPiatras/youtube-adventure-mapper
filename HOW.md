@@ -26,7 +26,28 @@ If a url was not supplied then video_url is undefined and the if statement sets 
 
 In line 144 the video_id is passed to the mapAdventure function along with a reference to the getTitles function.
 
-## The mapAdventure(url, callback) function
+## Function: mapAdventure(url, callback)
+
+Declared at **line 45** this is where a lot of the magic happens.
+
+The first four lines initialise some variables we will need:
+
+```javascript
+46    let map = {};
+47    let video_id = new URL(video_url).searchParams.get('v');
+48    let completion_count = 0;
+49    let video_count = 0;
+```
+
+In **line 47** we use the URL module to extract the *video_id* from the url.
+
+The variable **map** will store our map of the videos in this adventure.
+
+The variable **pending_videos** will be used to track how many videos we are currently fetching annotations for. This is intialised to zero, is incremented each time we start fetching annotations for a video and decremented when we finish fetching that video's annotations. When it returns to zero we call the function provided as an argument in the variable **callback**.
+
+The variable **video_count** is incremented each time we find a video we have not already encountered. It is used to provide feedback on the number of unique videos encountered (output happens at **line 59**).
+
+
 
 
 
