@@ -2,7 +2,11 @@ const https = require('https');
 const util = require('util');
 const repl = require('repl');
 const url = require('url');
-var fs = require('fs');
+const fs = require('fs');
+const Viz = require('viz.js');
+const { Module, render } = require('viz.js/full.render.js');
+const svg2img = require('svg2img');
+const btoa = require('btoa');
 
 //external modules
 const fetchVideoInfo = require('youtube-info');
@@ -96,7 +100,8 @@ function getTitles(map){
     video_title_fetch_chain.then( () => {
         console.log();
         write_json(map);
-        write_graph(map);
+        let dot = write_graph(map);
+        write_images(dot);
     });
 }
 
@@ -109,8 +114,10 @@ function write_json(map){
     
         console.log("Saved results to output.json");
     }); 
+
 }
 
+//writes graph to dot file, returns dot file as string
 function write_graph(map){
     let output = [];
     let line = '';
@@ -125,13 +132,39 @@ function write_graph(map){
         }
     }
     output.push('}\n');
-    fs.writeFile("./output.dot", output.join(''), function(err) {
+    output = output.join('');
+    fs.writeFile("./output.dot", output, function(err) {
         if(err) {
             return console.log(err);
         }
     
         console.log("Saved graph to output.dot");
     }); 
+
+    return output;
+}
+
+function write_images(dot){
+    let viz = new Viz({ Module, render });
+    viz.renderString(dot)
+        .then(
+            result => {
+                fs.writeFile("./output.svg", result, function(err) {
+                    if(err) {
+                        return console.log(err);
+                    }
+                    console.log("Saved graph to output.svg");
+                    svg2img(result, function(error, buffer) {
+                        //returns a Buffer
+                        fs.writeFileSync('output.png', buffer);
+                        console.log("Saved graph to output.png");
+                    });
+                   
+                });    
+        })
+        .catch(error => {
+            console.error(error);
+    });
 }
 
 
