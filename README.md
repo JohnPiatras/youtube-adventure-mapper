@@ -15,18 +15,38 @@ Ed can be found at the [Glasgow Coder Collective](https://glasgowcodercollective
 
 ## Usage
 
-`node youtube-adventure-mapper.js [url]`
+> `node youtube-adventure-mapper.js <options> [url]`
 
-Run it without providing a url and it will scrape the annotations of [The Dark Room](https://www.youtube.com/watch?v=OqozGZXYb1Y).
+There is, at the moment, only one option:
+
+  > `-o <filename> : sets the base output filename`
+
+The url must be a valid youtube video url, or one of the following values (for testing):
+
+  > `escape` - a short youtube adventure involving nerf guns
+
+  > `darkroom` - the Dark Room by John Robertson.
+
+So, just for clarity here are some examples of usage:
+
+  > `node youtube-adventure-mapper.js -o graph https://www.youtube.com/watch?v=Jm-Kmw8pKXw`
+
+This will create four output files: graph.json, graph.dot, graph.svg, graph.png.
+
+The video in the example above is The Dark Room and, as I used this for testing quite a lot, you can provide 'darkroom' as the url and it will map that very same video.
+  > `node youtube-adventure-mapper.js -o graph darkroom`
 
 ## Output
-The output consists of two files:
+The output consists of four files named 'output' with an appropiate extension by default:
 
  * output.json - a JSON representation of the videos and their annotation links to other videos.
 
- * output.dot - can plotted as a graph using the graphvis dot command.
+ * output.dot - can be plotted as a graph using the [Graphviz](https://www.graphviz.org/) visualization software.
 
- The DOT output can be turned into a fabulous visualisation using the command `dot -Tsvg ./output.dot > output.svg`.
+ * output.svg - a vector graphics plot created using the [viz.js](https://www.npmjs.com/package/viz.js) module.
+
+ * output.png - a png conversion of the svg file created using [svg2img](https://www.npmjs.com/package/svg2img).
+
 
 ## Examples
 The repository contains examples of maps generated from these three youtube games:
