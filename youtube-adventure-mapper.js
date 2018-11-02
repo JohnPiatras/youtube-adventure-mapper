@@ -50,7 +50,7 @@ function getAnnotationVideoIds(annotations){
     return result;
 }
 
-function mapAdventure(url, callback){
+function mapAdventure(url){
     let map = {};
     let video_id = new URL(video_url).searchParams.get('v');
     let pending_videos = 0;
@@ -77,7 +77,7 @@ function mapAdventure(url, callback){
                 //console.log('    Already mapped...');
             } 
             pending_videos--;
-            if(pending_videos == 0)callback(map);         
+            if(pending_videos == 0)main_callback('get_titles', map);        
         });
     }
 
@@ -103,19 +103,25 @@ function getTitles(map){
     
     video_title_fetch_chain.then( () => {
         console.log();
-        let json = JSON.stringify(map, undefined, 2);
-        write_file_sync(output_filename + ".json", json);
-        let dot = map2dot(map);
-        write_file_sync(output_filename + ".dot", dot);
-        dot2svg(dot).then(result => {
-            write_file_sync(output_filename + ".svg", result);
-            svg2img(result, function(error, buffer) {
-                if(error){
-                    console.log(error);
-                }else{
-                    write_file_sync(output_filename + ".png", buffer);
-                }
-            });
+        main_callback('write_files', map);
+    });
+}
+
+function writeFiles(map){
+    let json = JSON.stringify(map, undefined, 2);
+    write_file_sync(output_filename + ".json", json);
+
+    let dot = map2dot(map);
+    write_file_sync(output_filename + ".dot", dot);
+
+    dot2svg(dot).then(result => {
+        write_file_sync(output_filename + ".svg", result);
+        svg2img(result, function(error, buffer) {
+            if(error){
+                console.log(error);
+            }else{
+                write_file_sync(output_filename + ".png", buffer);
+            }
         });
     });
 }
@@ -178,6 +184,23 @@ function validate_url(url_string){
     return null;
 }
 
+
+//This is a placeholder till I switch to using promises rather than callbacks everywhere
+function main_callback(state, arg){
+    //states: map_videos, get_titles, write_files
+    switch(state) {
+        case 'map_videos':
+            mapAdventure(arg);
+            break;
+        case 'get_titles':
+            getTitles(arg);
+            break;
+        case 'write_files':
+            writeFiles(arg);
+            break;
+    }
+}
+
 //Supply a youtube video url at the command line, if none given use this as the default.
 let def_urls = new Map([
     ["escape", "https://www.youtube.com/watch?v=OqozGZXYb1Y"],
@@ -213,4 +236,6 @@ if(!video_url){
 
 console.log('Mapping Youtube adventure at ' + video_url);
 console.log('Base output filename is: ' + output_filename);
-let map = mapAdventure(video_url, getTitles);
+
+
+main_callback('map_videos', video_url);
