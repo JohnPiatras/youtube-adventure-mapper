@@ -4,7 +4,11 @@
   "description": "",
   "main": "youtube-adventure-mapper.js",
   "dependencies": {
+    "btoa": "^1.2.1",
+    "normalize-url": "^3.3.0",
     "request": "^2.88.0",
+    "svg2img": "^0.5.0",
+    "viz.js": "^2.0.0",
     "xml2js": "^0.4.19",
     "youtube-info": "^1.2.0"
   },
