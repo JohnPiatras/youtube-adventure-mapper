@@ -1,8 +1,18 @@
 ## Youtube Adventure Mapper
 
+## Bad News
+
+Unfortunately Google removed ALL annotations from videos on Jan 15th 2019 so this tool no longer works.
+I'll leave it here for posterity and also because I may now have one of the few remaining maps of John Robertson's "The Dark Room".
+
+
 Some intrepid, possibly slightly mad, people on youtube like to create choose your own adventure games using videos and annotations which link to other videos.
 
 One example is [The Dark Room](https://www.youtube.com/watch?v=OqozGZXYb1Y) by Australian comedian John Robertson.
+
+Here's an [Engadget article](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=3&cad=rja&uact=8&ved=2ahUKEwiikOrZiPTjAhVUlFwKHRErBo0QFjACegQIDRAH&url=https%3A%2F%2Fwww.engadget.com%2F2018%2F11%2F27%2Fyoutube-remove-pop-up-annotations-january-15th%2F&usg=AOvVaw0U3L5KU2g7t0lHuuyRAfGO) on the removal of annotations.
+
+## What is this?
 
 This tool allows you to map these adventure games.
 
